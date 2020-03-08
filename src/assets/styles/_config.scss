@@ -1,0 +1,22 @@
+$yellow: #ffbf00;
+$purple: #662cb3;
+$blue: #2771aa;
+$pink: #e83f6f;
+$green: #32936f;
+
+$light: #fcfafa;
+$dark: #0b2133;
+
+$primary: $yellow;
+$secondary: $purple;
+$highlight: $pink;
+$info: $blue;
+$success: $green;
+
+$link: $blue;
+$active-link: lignten($link, 20%);
+$border-color: lighten($dark, 50%);
+$bg-color: white;
+
+$serif: "Volkhov", serif;
+$sans-serif: "Lato", sans-serif;

@@ -1,0 +1,44 @@
+@mixin transition($what: all, $time: 0.2s, $how: ease-in-out) {
+  transition: $what $time $how;
+}
+
+@mixin keyframes($animation-name) {
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  animation: #{$str};
+}
+
+@include keyframes(move-in-top) {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@include keyframes(move-in-bottom) {
+  0% {
+    opacity: 0;
+    transform: translateY(+20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@include keyframes(fade-in-80) {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
