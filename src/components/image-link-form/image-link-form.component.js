@@ -1,7 +1,7 @@
 import React from "react";
 import "./image-link-form.styles.scss";
 
-const ImageLinkForm = () => {
+const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
   return (
     <div className="image-link-form">
       <h2 className="title">
@@ -11,8 +11,15 @@ const ImageLinkForm = () => {
         Paste an image url in the textbox below to give it a try...
       </p>
       <div className="form-group">
-        <input className="text-input" type="text" placeholder="image url" />
-        <button className="btn">Detect</button>
+        <input
+          className="text-input"
+          type="text"
+          placeholder="image url"
+          onChange={onInputChange}
+        />
+        <button className="btn" onClick={onButtonSubmit}>
+          Detect
+        </button>
       </div>
     </div>
   );

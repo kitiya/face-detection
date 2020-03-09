@@ -1,0 +1,18 @@
+@import "../../App.scss";
+
+.face-recognition {
+  display: flex;
+  justify-content: center;
+  margin: 25px auto;
+
+  .image {
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px $dark;
+    max-width: 80%;
+
+    &:hover {
+      opacity: 0.9;
+      box-shadow: 0px 0px 10px $light;
+    }
+  }
+}

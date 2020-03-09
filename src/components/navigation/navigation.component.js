@@ -5,7 +5,7 @@ import "./navigation.styles.scss";
 
 const Navigation = () => {
   return (
-    <nav>
+    <nav className="navigation">
       <Logo />
       <p className="sign-out">Sign out</p>
     </nav>
