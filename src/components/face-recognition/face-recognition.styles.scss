@@ -8,11 +8,25 @@
   .image {
     border-radius: 3px;
     box-shadow: 0px 0px 10px $dark;
-    max-width: 80%;
+    width: 500px;
+    height: auto;
+    // max-width: 80%;
+    // min-height: 20vh;
+    // max-height: 50vh;
 
     &:hover {
       opacity: 0.9;
       box-shadow: 0px 0px 10px $light;
+    }
+  }
+
+  .image-wrapper {
+    position: relative;
+
+    .bounding-box {
+      position: absolute;
+      box-shadow: 0 0 0 3px $pink inset;
+      display: flex;
     }
   }
 }

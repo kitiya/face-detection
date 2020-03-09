@@ -10,6 +10,7 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
       <p className="subtitle">
         Paste an image url in the textbox below to give it a try...
       </p>
+
       <div className="form-group">
         <input
           className="text-input"
