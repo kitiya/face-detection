@@ -1,10 +1,13 @@
 body {
   background-color: $bg-color;
+  background: $purple;
+  background: linear-gradient(135deg, $purple 0%, $purple 20%, $pink 70%);
+  background-repeat: no-repeat;
   font-family: $sans-serif;
   font-weight: lighter;
   font-size: 16px;
   line-height: 1.5;
-  color: $dark;
+  color: white;
 }
 
 h1 {

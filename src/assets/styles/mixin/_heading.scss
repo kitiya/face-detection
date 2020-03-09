@@ -5,6 +5,7 @@
 @mixin heading {
   font-family: $serif;
   margin-bottom: 0.35em;
+  text-align: center;
   line-height: 1.2;
   color: inherit;
   a {

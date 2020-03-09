@@ -1,0 +1,48 @@
+@import "../../App.scss";
+
+.image-link-form {
+  .subtitle {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.2rem;
+    font-weight: lighter;
+  }
+
+  .form-group {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 30px 50px;
+    color: lighten($dark, 20%);
+    background: radial-gradient($purple 15%, transparent 16%) 0 0,
+      radial-gradient($purple 15%, transparent 16%) 8px 8px,
+      radial-gradient(lighten($purple, 50%) 15%, transparent 20%) 0 1px,
+      radial-gradient(lighten($purple, 50%) 15%, transparent 20%) 8px 9px;
+    background-color: lighten($purple, 10%);
+    background-size: 16px 16px;
+
+    .text-input {
+      width: 100%;
+      height: 30px;
+      padding: 20px 10px;
+      font-size: 1.5rem;
+      color: lighten($dark, 20%);
+      border: none;
+    }
+
+    .btn {
+      padding: 9px 30px;
+      background-color: $purple;
+      font-size: 1.25rem;
+      color: $light;
+      border: none;
+
+      &:hover {
+        background-color: darken($purple, 10%);
+        cursor: pointer;
+      }
+    }
+  }
+}
