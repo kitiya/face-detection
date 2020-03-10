@@ -7,6 +7,7 @@ import Navigation from "../../components/navigation/navigation.component";
 import ImageLinkForm from "../../components/image-link-form/image-link-form.component";
 import Rank from "../../components/rank/rank.component";
 import FaceRecognition from "../../components/face-recognition/face-recognition.component";
+import SignIn from "../../components/sign-in/sign-in.component";
 
 const app = new Clarifai.App({
   apiKey: process.env.REACT_APP_CLARIFAI_KEY
@@ -24,11 +25,17 @@ const particlesOptions = {
   }
 };
 const HomePage = () => {
+  const defaultUrl =
+    "https://cdn.pixabay.com/photo/2016/01/19/17/19/young-woman-1149643_960_720.jpg";
+
   const [inputUrl, setInputUrl] = useState("");
-  const [imageUrl, setImageUrl] = useState(
-    "https://cdn.pixabay.com/photo/2018/03/12/12/32/woman-3219507_960_720.jpg"
-  );
+  const [imageUrl, setImageUrl] = useState(defaultUrl);
   const [box, setBox] = useState({});
+  const [route, setRoute] = useState("home");
+
+  const onRouteChange = route => {
+    setRoute(route);
+  };
 
   const calculateFaceLocation = response => {
     console.log(response);
@@ -67,15 +74,21 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
-      {/* <Particles className="particles" params={particlesOptions} /> */}
+      <Particles className="particles" params={particlesOptions} />
 
-      <Navigation />
-      <Rank />
-      <ImageLinkForm
-        onInputChange={onInputChange}
-        onButtonSubmit={onButtonSubmit}
-      />
-      <FaceRecognition box={box} imageUrl={imageUrl} />
+      <Navigation onRouteChange={() => onRouteChange("signin")} />
+      {route === "signin" ? (
+        <SignIn onRouteChange={() => onRouteChange("home")} />
+      ) : (
+        <>
+          <Rank />
+          <ImageLinkForm
+            onInputChange={onInputChange}
+            onButtonSubmit={onButtonSubmit}
+          />
+          <FaceRecognition box={box} imageUrl={imageUrl} />
+        </>
+      )}
     </div>
   );
 };

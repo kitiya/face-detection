@@ -15,22 +15,22 @@
 
 @mixin heading-1 {
   @include heading;
-  font-size: 1.75rem;
+  font-size: 2rem;
 }
 
 @mixin heading-2 {
   @include heading;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
 }
 
 @mixin heading-3 {
   @include heading;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 
 @mixin heading-4 {
   @include heading;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
 }
 
 @mixin heading-5 {

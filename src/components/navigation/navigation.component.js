@@ -3,11 +3,13 @@ import Logo from "../logo/logo.component";
 
 import "./navigation.styles.scss";
 
-const Navigation = () => {
+const Navigation = ({ onRouteChange }) => {
   return (
     <nav className="navigation">
       <Logo />
-      <p className="sign-out">Sign out</p>
+      <p className="sign-out" onClick={onRouteChange}>
+        Sign out
+      </p>
     </nav>
   );
 };

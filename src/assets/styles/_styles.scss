@@ -1,3 +1,7 @@
+* {
+  font-family: $sans-serif;
+}
+
 body {
   background-color: $bg-color;
   background: $purple;
@@ -33,4 +37,11 @@ a {
   color: $link;
   text-decoration: none;
   cursor: pointer;
+}
+
+input,
+.btn {
+  &:focus {
+    outline: 0;
+  }
 }
