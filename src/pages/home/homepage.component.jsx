@@ -113,7 +113,7 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
-      {/* <Particles className="particles" params={particlesOptions} /> */}
+      <Particles className="particles" params={particlesOptions} />
 
       <Navigation onRouteChange={() => onRouteChange("signin")} />
       {route === "signin" ? (
