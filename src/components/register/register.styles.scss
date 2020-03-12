@@ -1,6 +1,6 @@
 @import "../../App.scss";
 
-.sign-in {
+.register {
   min-width: 350px;
   max-width: 500px;
   background: transparent;
@@ -28,26 +28,50 @@
       text-align: start;
       border-bottom: 1px solid darken($light, 25%);
     }
-  }
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-bottom: 20px;
 
-  .sign-in-btn-wrapper {
-    margin-bottom: 20px;
-    width: 100%;
-  }
+      .input-label {
+        font-size: 1.2rem;
+      }
 
-  .btn {
-    width: 100%;
-    padding: 10px;
-    font-size: 1.2rem;
-    background: transparent;
-    color: $light;
-    border-radius: 5px;
-    box-shadow: 0 0 1px $light;
+      .input-box {
+        font-size: 1.2rem;
+        padding: 5px;
+        background-color: $light;
+        opacity: 0.7;
+        border: 1px solid $light;
+        border-radius: 5px;
 
-    &:hover {
-      box-shadow: 0 0 5px $light;
+        &:hover {
+          opacity: 1;
+        }
+      }
     }
   }
+
+  .register-btn-wrapper {
+    margin-bottom: 20px;
+    width: 100%;
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      font-size: 1.2rem;
+      background: transparent;
+      color: $light;
+      border-radius: 5px;
+      box-shadow: 0 0 1px $light;
+
+      &:hover {
+        box-shadow: 0 0 5px $light;
+      }
+    }
+  }
+
   .register-wrapper {
     .register-link {
       font-size: 1.2rem;

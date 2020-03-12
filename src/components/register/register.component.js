@@ -1,11 +1,16 @@
 import React, { useState } from "react";
-
 import FormInput from "../form-input/form-input.component";
-import "./sign-in.styles.scss";
 
-const SignIn = ({ onRouteChange, loadUser }) => {
+import "./register.styles.scss";
+
+const Register = ({ onRouteChange, loadUser }) => {
+  const [name, setName] = useState("John");
   const [email, setEmail] = useState("john@gmail.com");
   const [password, setPassword] = useState("cookies");
+
+  const handleNameChange = event => {
+    setName(event.target.value);
+  };
 
   const handleEmailChange = event => {
     setEmail(event.target.value);
@@ -15,20 +20,21 @@ const SignIn = ({ onRouteChange, loadUser }) => {
     setPassword(event.target.value);
   };
 
-  const onSubmitSignIn = () => {
-    fetch("http://localhost:3001/signin", {
+  const onSubmitRegister = () => {
+    fetch("http://localhost:3001/register", {
       method: "post",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
+        name: name,
         email: email,
         password: password
       })
     })
       .then(response => response.json())
       .then(user => {
-        if (user.id) {
+        if (user) {
           loadUser(user);
           onRouteChange("home");
         }
@@ -36,9 +42,17 @@ const SignIn = ({ onRouteChange, loadUser }) => {
   };
 
   return (
-    <div className="sign-in">
-      <section className="form-input-section" id="sign-in">
-        <h2 className="title">Sign in</h2>
+    <div className="register">
+      <section className="form-input-section" id="sign-up">
+        <h2 className="title">Register</h2>
+        <FormInput
+          required
+          name="name"
+          type="text"
+          value={name}
+          handleChange={handleNameChange}
+          label="Name"
+        />
         <FormInput
           required
           name="email"
@@ -56,21 +70,21 @@ const SignIn = ({ onRouteChange, loadUser }) => {
           label="Password"
         />
       </section>
-      <div className="sign-in-btn-wrapper">
+      <div className="register-btn-wrapper">
         <input
           className="btn"
           type="submit"
-          value="Sign in"
-          onClick={onSubmitSignIn}
+          value="Register"
+          onClick={onSubmitRegister}
         />
       </div>
       <div className="register-wrapper">
-        <p onClick={() => onRouteChange("register")} className="register-link">
-          Register
+        <p onClick={() => onRouteChange("signin")} className="signin-link">
+          Sign in
         </p>
       </div>
     </div>
   );
 };
 
-export default SignIn;
+export default Register;
