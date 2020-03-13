@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Particles from "react-particles-js";
 import Clarifai from "clarifai";
 
@@ -94,7 +94,7 @@ const HomePage = () => {
       .predict(Clarifai.FACE_DETECT_MODEL, inputUrl)
       .then(response => {
         if (response) {
-          fetch("http://localhost:3001/image", {
+          fetch("http://localhost:3010/image", {
             method: "put",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

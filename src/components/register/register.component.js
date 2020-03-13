@@ -21,7 +21,7 @@ const Register = ({ onRouteChange, loadUser }) => {
   };
 
   const onSubmitRegister = () => {
-    fetch("http://localhost:3001/register", {
+    fetch("http://localhost:3010/register", {
       method: "post",
       headers: {
         "Content-Type": "application/json"
