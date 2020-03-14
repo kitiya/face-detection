@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Particles from "react-particles-js";
 import Clarifai from "clarifai";
 
@@ -43,6 +43,27 @@ const HomePage = () => {
     joined: ""
   });
 
+  const clearState = () => {
+    setInputUrl("");
+    setImageUrl(defaultUrl);
+    setBox({});
+    setRoute("home");
+    setUser({
+      id: "",
+      name: "",
+      email: "",
+      password: "",
+      entries: 0,
+      joined: ""
+    });
+  };
+
+  useEffect(() => {
+    if (route === "home") {
+      clearState();
+    }
+  }, [route]);
+
   const onRouteChange = route => {
     setRoute(route);
   };
@@ -61,14 +82,11 @@ const HomePage = () => {
   // console.log(user);
 
   const calculateFaceLocation = response => {
-    // console.log(response);
     const faceData =
       response.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById("input-image");
     const width = Number(image.width);
     const height = Number(image.height);
-    // console.log(width, height);
-    // console.log(faceData.left_col);
 
     return {
       leftCol: faceData.left_col * width,
@@ -102,8 +120,8 @@ const HomePage = () => {
             })
           })
             .then(response => response.json())
-            .then(count => setUser(Object.assign(user, { entries: count })));
-          // .then(count => (user.entries = count));
+            .then(count => setUser(Object.assign(user, { entries: count })))
+            .catch(console.log);
         }
 
         displayFaceBox(calculateFaceLocation(response));
@@ -113,7 +131,7 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
-      <Particles className="particles" params={particlesOptions} />
+      {/* <Particles className="particles" params={particlesOptions} /> */}
 
       <Navigation onRouteChange={() => onRouteChange("signin")} />
       {route === "signin" ? (

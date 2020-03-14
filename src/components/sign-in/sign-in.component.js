@@ -4,8 +4,8 @@ import FormInput from "../form-input/form-input.component";
 import "./sign-in.styles.scss";
 
 const SignIn = ({ onRouteChange, loadUser }) => {
-  const [email, setEmail] = useState("john@gmail.com");
-  const [password, setPassword] = useState("cookies");
+  const [email, setEmail] = useState("yolanda@gmail.com");
+  const [password, setPassword] = useState("yumyum");
 
   const handleEmailChange = event => {
     setEmail(event.target.value);
