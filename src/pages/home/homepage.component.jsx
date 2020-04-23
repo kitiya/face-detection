@@ -11,7 +11,7 @@ import SignIn from "../../components/sign-in/sign-in.component";
 import Register from "../../components/register/register.component";
 
 const app = new Clarifai.App({
-  apiKey: process.env.REACT_APP_CLARIFAI_KEY
+  apiKey: process.env.REACT_APP_CLARIFAI_KEY,
 });
 
 const particlesOptions = {
@@ -20,10 +20,10 @@ const particlesOptions = {
       value: 30,
       density: {
         enable: true,
-        value_area: 300
-      }
-    }
-  }
+        value_area: 300,
+      },
+    },
+  },
 };
 
 const HomePage = () => {
@@ -40,7 +40,7 @@ const HomePage = () => {
     email: "",
     password: "",
     entries: 0,
-    joined: ""
+    joined: "",
   });
 
   const clearState = () => {
@@ -54,7 +54,7 @@ const HomePage = () => {
       email: "",
       password: "",
       entries: 0,
-      joined: ""
+      joined: "",
     });
   };
 
@@ -64,24 +64,24 @@ const HomePage = () => {
     }
   }, [route]);
 
-  const onRouteChange = route => {
+  const onRouteChange = (route) => {
     setRoute(route);
   };
 
-  const loadUser = userData => {
+  const loadUser = (userData) => {
     setUser({
       id: userData.id,
       name: userData.name,
       email: userData.email,
       password: userData.password,
       entries: userData.entries,
-      joined: userData.joined
+      joined: userData.joined,
     });
   };
 
   // console.log(user);
 
-  const calculateFaceLocation = response => {
+  const calculateFaceLocation = (response) => {
     const faceData =
       response.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById("input-image");
@@ -92,16 +92,16 @@ const HomePage = () => {
       leftCol: faceData.left_col * width,
       topRow: faceData.top_row * height,
       rightCol: width - faceData.right_col * width,
-      bottomRow: height - faceData.bottom_row * height
+      bottomRow: height - faceData.bottom_row * height,
     };
   };
 
-  const displayFaceBox = box => {
+  const displayFaceBox = (box) => {
     // console.log(box);
     setBox(box);
   };
 
-  const onInputChange = event => {
+  const onInputChange = (event) => {
     setInputUrl(event.target.value);
   };
 
@@ -110,28 +110,29 @@ const HomePage = () => {
     setImageUrl(inputUrl);
     app.models
       .predict(Clarifai.FACE_DETECT_MODEL, inputUrl)
-      .then(response => {
+      .then((response) => {
         if (response) {
           fetch("http://localhost:3010/image", {
             method: "put",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              id: user.id
-            })
+              id: user.id,
+            }),
           })
-            .then(response => response.json())
-            .then(count => setUser(Object.assign(user, { entries: count })))
+            .then((response) => response.json())
+            .then((count) => setUser(Object.assign(user, { entries: count })))
             .catch(console.log);
         }
 
+        console.log(user.entries);
         displayFaceBox(calculateFaceLocation(response));
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   return (
     <div className="home-page">
-      {/* <Particles className="particles" params={particlesOptions} /> */}
+      <Particles className="particles" params={particlesOptions} />
 
       <Navigation onRouteChange={() => onRouteChange("signin")} />
       {route === "signin" ? (
